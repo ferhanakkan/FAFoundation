@@ -19,7 +19,7 @@ class FAAwaitTRouter: FAAwaitNetworkRouter {
         let session = URLSession.shared
         do {
             let request = try self.buildRequest(from: route, timeout: timeout)
-            FAAwaitNetworkLogger.log(request: request)
+            FANetworkLogger.log(request: request)
             let task = session.dataTask(with: request, completionHandler: { data, response, error in
                 completion(data, response, error)
             })
@@ -74,9 +74,9 @@ class FAAwaitTRouter: FAAwaitNetworkRouter {
         }
     }
 
-    fileprivate func configureParameters(bodyParameters: FAAwaitParameters?,
-                                         bodyEncoding: FAAwaitParameterEncoding,
-                                         urlParameters: FAAwaitParameters?,
+    fileprivate func configureParameters(bodyParameters: FAParameters?,
+                                         bodyEncoding: FAParameterEncoding,
+                                         urlParameters: FAParameters?,
                                          request: inout URLRequest) throws {
         do {
             try bodyEncoding.encode(urlRequest: &request,
@@ -86,16 +86,16 @@ class FAAwaitTRouter: FAAwaitNetworkRouter {
         }
     }
 
-    fileprivate func addAdditionalHeaders(_ additionalHeaders: FAAwaitHTTPHeaders?, request: inout URLRequest) {
+    fileprivate func addAdditionalHeaders(_ additionalHeaders: FAHTTPHeaders?, request: inout URLRequest) {
         guard let headers = additionalHeaders else { return }
         for header in headers.headers {
             request.setValue(header.value, forHTTPHeaderField: header.key)
         }
     }
 
-    fileprivate func configureParameters(multipartParameters: [FAAwaitMultipartEncodable], urlParameters: FAAwaitParameters?, request: inout URLRequest) {
+    fileprivate func configureParameters(multipartParameters: [FAMultipartEncodable], urlParameters: FAParameters?, request: inout URLRequest) {
         if let url = request.url {
-            var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: FAAwaitlse)
+            var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false)
             let queryItems: [URLQueryItem] = urlParameters?.compactMap({ .init(name: $0.key, value: String(describing: $0.value))}) ?? []
             urlComponents?.queryItems = queryItems
             request.url = urlComponents?.url
@@ -106,12 +106,12 @@ class FAAwaitTRouter: FAAwaitNetworkRouter {
         var body = Data()
 
         for parameter in multipartParameters {
-            if let parameter = parameter as? FAAwaitMultipartParameter {
+            if let parameter = parameter as? FAMultipartParameter {
                 body.append("--\(boundary)\(lineBreak)")
                 body.append("Content-Disposition: form-data; name=\"\(parameter.name)\"\(lineBreak)\(lineBreak)")
                 body.append("\(parameter.value)\(lineBreak)")
             }
-            if let media = parameter as? FAAwaitMultipartMedia {
+            if let media = parameter as? FAMultipartMedia {
                 body.append("--\(boundary)\(lineBreak)")
                 body.append("Content-Disposition: form-data; name=\"\(media.name)\"; filename=\"\(media.filename)\"\(lineBreak)")
                 body.append("Content-Type: \(media.mimeType.value)\(lineBreak)\(lineBreak)")
@@ -124,13 +124,5 @@ class FAAwaitTRouter: FAAwaitNetworkRouter {
         request.httpBody = body
 
         request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-    }
-}
-
-extension Data {
-    mutating func append(_ string: String) {
-        if let data = string.data(using: .utf8) {
-            append(data)
-        }
     }
 }

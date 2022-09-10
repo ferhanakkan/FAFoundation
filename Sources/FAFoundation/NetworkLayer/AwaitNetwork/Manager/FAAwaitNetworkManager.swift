@@ -7,15 +7,15 @@
 
 import UIKit
 
-public typealias FAAwaitNetworkCompletion<Response: Decodable> = (Result<FAAwaitNetworkResponse<Response>, FAAwaitNetworkError>) -> Void
+public typealias FAAwaitNetworkCompletion<Response: Decodable> = (Result<FANetworkResponse<Response>, FANetworkError>) -> Void
 
-typealias FAAwaitServiceCompletion<Response: Decodable> = (Result<Response, FAAwaitNetworkError>) -> Void
+typealias FAAwaitServiceCompletion<Response: Decodable> = (Result<Response, FANetworkError>) -> Void
 
-typealias FAAwaitServiceCompletionStatusCode<Response: Decodable> = (Result<(response: Response, status: HTTPStatus), FAAwaitNetworkError>) -> Void
+typealias FAAwaitServiceCompletionStatusCode<Response: Decodable> = (Result<(response: Response, status: HTTPStatus), FANetworkError>) -> Void
 
 public protocol FAAwaitNetworkManagerProtocol {
     static var shared: FAAwaitNetworkManagerProtocol { get }
-    var reachability: FAAwaitReachabilityManagerProtocol { get }
+    var reachability: FAReachabilityManagerProtocol { get }
 
     @discardableResult
     func genericFetch<EndpointType: FAAwaitEndpoint>(queue: DispatchQueue,
@@ -34,14 +34,14 @@ public extension FAAwaitNetworkManagerProtocol {
         FAAwaitNetworkManager.shared
     }
 
-    var reachability: FAAwaitReachabilityManagerProtocol {
+    var reachability: FAReachabilityManagerProtocol {
         FAAwaitNetworkManager.shared.reachability
     }
 }
 
 struct FAAwaitNetworkManager: FAAwaitNetworkManagerProtocol {
     static let shared: FAAwaitNetworkManager = .init()
-    public let reachability = FAAwaitReachabilityManager()
+    public let reachability = FAReachabilityManager()
 
     func genericFetch<EndpointType: FAAwaitEndpoint>(queue: DispatchQueue = .main,
                                                 _ endpoint: EndpointType,
@@ -57,21 +57,21 @@ struct FAAwaitNetworkManager: FAAwaitNetworkManagerProtocol {
                                                         completion: @escaping FAAwaitNetworkCompletion<EndpointType.ResponseType>) -> URLSessionTask? {
         let task = FAAwaitTRouter().request(endpoint, timeout: endpoint.timeout) { data, response, error in
             guard error == nil, let data = data else {
-                completion(.FAAwaitilure(.serviceError))
+                completion(.failure(.serviceError))
                 return
             }
             if let response = response as? HTTPURLResponse {
                 do {
-                    let networkResponse = try FAAwaitNetworkResponse<EndpointType.ResponseType>(urlResponse: response, with: data)
+                    let networkResponse = try FANetworkResponse<EndpointType.ResponseType>(urlResponse: response, with: data)
 
                     completion(.success(networkResponse))
                 } catch {
                     print(error)
-                    completion(.FAAwaitilure(.decodingError))
+                    completion(.failure(.decodingError))
                 }
             } else {
-                /// - TODO: Chechk if response allways can be converted to HTTPURLResponse
-                completion(.FAAwaitilure(.serviceError))
+                /// - TODO: Chech if response allways can be converted to HTTPURLResponse
+                completion(.failure(.serviceError))
             }
         }
         return task

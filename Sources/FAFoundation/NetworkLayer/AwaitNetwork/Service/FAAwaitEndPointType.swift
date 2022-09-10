@@ -12,20 +12,20 @@ public protocol FAAwaitEndpoint: FAAwaitAPI {
 
     var path: String { get }
 
-    var httpMethod: FAAwaitHTTPMethod { get }
+    var httpMethod: FAHTTPMethod { get }
 
-    var task: FAAwaitHTTPTask { get }
+    var task: FAHTTPTask { get }
 
-    var headers: FAAwaitHTTPHeaders? { get }
+    var headers: FAHTTPHeaders? { get }
 }
 
 extension FAAwaitEndpoint {
-    var headers: FAAwaitHTTPHeaders? {
+    var headers: FAHTTPHeaders? {
         nil
     }
 
-    var allHeaders: FAAwaitHTTPHeaders? {
-        var allHeaders: [FAAwaitHTTPHeader] = []
+    var allHeaders: FAHTTPHeaders? {
+        var allHeaders: [FAHTTPHeader] = []
 
         allHeaders += headers?.headers ?? []
         allHeaders += baseHeaders?.headers ?? []
@@ -39,7 +39,7 @@ extension FAAwaitEndpoint {
 }
 
 public protocol FAAwaitAPI {
-    var baseHeaders: FAAwaitHTTPHeaders? { get }
+    var baseHeaders: FAHTTPHeaders? { get }
     var baseURL: URL { get }
     var timeout: TimeInterval { get }
 }
