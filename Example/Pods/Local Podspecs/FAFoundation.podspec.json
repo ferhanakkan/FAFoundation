@@ -1,0 +1,22 @@
+{
+  "name": "FAFoundation",
+  "version": "0.1.0",
+  "summary": "A short description of FAFoundation.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/Ferhan Akkan/FAFoundation",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "Ferhan Akkan": "ferhan.akkan@vakifbank.com.tr"
+  },
+  "source": {
+    "git": "https://github.com/Ferhan Akkan/FAFoundation.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "10.0"
+  },
+  "source_files": "FAFoundation/Classes/**/*"
+}

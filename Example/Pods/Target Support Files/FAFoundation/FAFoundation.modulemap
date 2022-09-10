@@ -1,0 +1,6 @@
+framework module FAFoundation {
+  umbrella header "FAFoundation-umbrella.h"
+
+  export *
+  module * { export * }
+}

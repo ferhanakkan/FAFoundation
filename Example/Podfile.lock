@@ -1,0 +1,16 @@
+PODS:
+  - FAFoundation (0.1.0)
+
+DEPENDENCIES:
+  - FAFoundation (from `../`)
+
+EXTERNAL SOURCES:
+  FAFoundation:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FAFoundation: cfb36a40262cf83439ebc829480f50af0dcdf86e
+
+PODFILE CHECKSUM: eb6c31460f09a9b892a2fe5db444c71961ea307c
+
+COCOAPODS: 1.11.3
