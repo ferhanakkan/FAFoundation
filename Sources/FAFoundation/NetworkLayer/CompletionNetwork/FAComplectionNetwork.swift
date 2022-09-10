@@ -9,4 +9,6 @@ public struct FACompletionNetwork {
     public static var shared: FANetworkManagerProtocol {
         FANetworkManager.shared
     }
+    
+    private init() {}
 }
