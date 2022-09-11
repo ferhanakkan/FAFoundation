@@ -16,6 +16,7 @@ public protocol LocationManagerOutputProtocol: AnyObject {
 public extension LocationManagerOutputProtocol {
     func locationManager(_ manager: LocationManagerProtocol, didUpdateLocation location: FACoordinate) {}
     func locationManager(_ manager: LocationManagerProtocol, didChangeAuthorizationStatus status: FALocationStatus) {}
+    func locationManager(_ manager: LocationManagerProtocol, didDeniedAuthorizationStatus status: FALocationStatus) {}
 }
 
 public protocol LocationManagerProtocol {
@@ -40,6 +41,7 @@ public final class LocationManager: LocationManagerProtocol {
     private var locationHandler: LocationHandlerProtocol
     public weak var delegate: LocationManagerOutputProtocol?
     
+    /// Should add " Privacy - Location When In Use Usage Description " and  "Privacy - Location Always and When In Use Usage Description" to be enanble use this service. Also for background locations you have to add backgorund Modes Capability Location updates check.
     init(locationHandler: LocationHandlerProtocol = LocationHandler()) {
         self.locationHandler = locationHandler
         self.locationHandler.delegate = self
