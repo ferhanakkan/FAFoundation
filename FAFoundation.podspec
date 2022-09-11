@@ -28,7 +28,7 @@ TODO: Add long description of the pod here.
   s.source           = { :git => 'https://github.com/Ferhan Akkan/FAFoundation.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/akkanferhan'
 
-  s.ios.deployment_target = '14.0'
+  s.ios.deployment_target = '13.0'
 
   s.source_files = 'FAFoundation/Classes/**/*'
   

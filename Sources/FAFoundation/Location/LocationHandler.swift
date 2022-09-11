@@ -77,7 +77,11 @@ extension LocationHandler: CLLocationManagerDelegate {
             isFirstStatusChange = false
             return
         }
-        delegate?.locationHandler(self, didChangeAuthorizationStatus: .init(status: coreLocationManager.authorizationStatus))
+        if #available(iOS 14, *) {
+            delegate?.locationHandler(self, didChangeAuthorizationStatus: .init(status: coreLocationManager.authorizationStatus))
+        } else {
+            delegate?.locationHandler(self, didChangeAuthorizationStatus: .init(status: CLLocationManager.authorizationStatus()))
+        }
     }
 
     func locationManager(
@@ -114,7 +118,11 @@ extension LocationHandler: LocationHandlerProtocol {
     }
     
     func getAuthorizationStatus() -> FALocationStatus {
-        return FALocationStatus(status: coreLocationManager.authorizationStatus)
+        if #available(iOS 14, *) {
+            return FALocationStatus(status: coreLocationManager.authorizationStatus)
+        } else {
+            return FALocationStatus(status: CLLocationManager.authorizationStatus())
+        }
     }
     
     func setBestDesiredAccuracy() {
