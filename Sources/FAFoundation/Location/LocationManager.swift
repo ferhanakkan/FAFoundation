@@ -33,7 +33,7 @@ public protocol LocationManagerProtocol {
     func setBackgroundUpdate(isEnable: Bool)
     func getAuthorizationStatus() -> FALocationStatus
     func setBestDesiredAccuracy()
-    func startLocationFlowWithAuthorization()
+    func requestAuthorization()
 }
 
 public final class LocationManager: LocationManagerProtocol {
@@ -98,16 +98,8 @@ public extension LocationManager  {
         locationHandler.setBestDesiredAccuracy()
     }
     
-    func startLocationFlowWithAuthorization() {
-       let status = locationHandler.getAuthorizationStatus()
-        switch status {
-        case .avaiable:
-            locationHandler.startUpdatingLocation()
-        case .denied:
-            delegate?.locationManager(self, didDeniedAuthorizationStatus: status)
-        case .notDetermined:
-            locationHandler.requestAuthorization()
-        }
+    func requestAuthorization() {
+        locationHandler.requestAuthorization()
     }
 }
 
