@@ -201,25 +201,7 @@ public extension String {
 
         return attributedString
     }
-
-    /**
-        Calculates and returns height for font and width.
-
-        - Parameter width: Constrained width of String.
-        - Parameter font: Font
-
-        - Returns: Height of String with specified font and width.
-     */
-    @available(*, deprecated, message: "Use height(withConstrainedWidth width: CGFloat, font: UIFont, numberOfLines: Int) instead of this one.")
-    func height(withConstrainedWidth width: CGFloat, font: UIFont) -> CGFloat {
-        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-        let boundingBox = self.boundingRect(with: constraintRect,
-                                            options: .usesLineFragmentOrigin,
-                                            attributes: [.font: font],
-                                            context: nil)
-
-        return ceil(boundingBox.height)
-    }
+    
     /**
         Calculates and returns height for font, width and numberOfLines.
 
