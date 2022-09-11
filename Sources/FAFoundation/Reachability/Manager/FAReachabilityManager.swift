@@ -8,7 +8,9 @@
 import Network
 
 public protocol FAReachabilityManagerProtocol {
-    func checkReachability(completion: @escaping (FAReachability) -> Void)
+    var isReachable: Bool { get }
+    func listenReachability(completion: @escaping FAReachabilityCompletion)
+    func checkReachability(completion: @escaping FAReachabilityCompletion)
     func stopReachability()
     func isWiFiEnabled() -> Bool
 }
@@ -20,7 +22,21 @@ final class FAReachabilityManager {
     }
 
     // MARK: - Properties
+    var isReachable: Bool {
+        let monitor = NWPathMonitor()
+        monitor.start(queue: .main)
+        return monitor.currentPath.status == .satisfied
+    }
+    
     private let monitor = NWPathMonitor()
+    private var status: FAReachabilityStatus {
+        switch monitor.currentPath.status {
+        case .satisfied:
+            return .satisfied
+        default:
+            return .requiresConnection
+        }
+    }
 
     // MARK: - Initialization
     init() {
@@ -35,38 +51,32 @@ final class FAReachabilityManager {
 
 // MARK: - FAReachabilityManagerProtocol
 extension FAReachabilityManager: FAReachabilityManagerProtocol {
-    func checkReachability(completion: @escaping (FAReachability) -> Void) {
-        monitor.start(queue: .global(qos: .background))
-        var status: FAReachabilityStatus {
-            switch monitor.currentPath.status {
-            case .satisfied:
-                return .satisfied
-            default:
-                return .requiresConnection
+    func listenReachability(completion: @escaping FAReachabilityCompletion) {
+        monitor.pathUpdateHandler = { [weak self] path in
+            guard
+                let self = self,
+                let interface = NWInterface.InterfaceType.allCases.first(where: { self.monitor.currentPath.usesInterfaceType($0)})
+            else {
+                completion(.init(type: .noConnection, status: .requiresConnection))
+                return
             }
+            completion(.init(type: self.getInterfaceType(with: interface), status: self.status))
+        }
+        monitor.start(queue: .global(qos: .background))
+    }
+    
+    func checkReachability(completion: @escaping FAReachabilityCompletion) {
+        let monitor = NWPathMonitor()
+        monitor.start(queue: .global(qos: .background))
+        defer {
+            monitor.cancel()
         }
 
         guard let interface = NWInterface.InterfaceType.allCases.first(where: { monitor.currentPath.usesInterfaceType($0) }) else {
             completion(.init(type: .noConnection, status: .requiresConnection))
-            stopReachability()
             return
         }
- 
-        var type: FAReachabilityType {
-            switch interface {
-            case .wifi:
-                return .wifi
-            case .cellular:
-                return .cellular
-            case .wiredEthernet:
-                return .wiredEthernet
-            default:
-                return .loopback
-            }
-        }
-
-        completion(.init(type: type, status: status))
-        stopReachability()
+        completion(.init(type: getInterfaceType(with: interface), status: status))
     }
 
     func stopReachability() {
@@ -89,6 +99,21 @@ extension FAReachabilityManager: FAReachabilityManagerProtocol {
         freeifaddrs(ifaddr)
         guard let count = counts[Constants.awdl] else { return false }
         return count > 1
+    }
+}
+
+private extension FAReachabilityManager {
+    func getInterfaceType(with interface: NWInterface.InterfaceType) -> FAReachabilityType {
+        switch interface {
+        case .wifi:
+            return .wifi
+        case .cellular:
+            return .cellular
+        case .wiredEthernet:
+            return .wiredEthernet
+        default:
+            return .loopback
+        }
     }
 }
 
