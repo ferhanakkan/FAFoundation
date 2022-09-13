@@ -36,6 +36,15 @@ public extension Double {
         Int(self)
     }
     
+    /**
+        Returns String of self.
+
+        - Returns: String with value of self.
+     */
+    var asString: String? {
+        String(self)
+    }
+    
     /// Rounds the double to decimal places value.
     /// - Parameter places: Decimal places to round.
     /// - Returns: Rounded value to given decimal places.

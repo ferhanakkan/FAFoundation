@@ -28,6 +28,15 @@ public extension Int {
     }
     
     /**
+        Returns String of self.
+
+        - Returns: String with value of self.
+     */
+    var asString: String? {
+        String(self)
+    }
+    
+    /**
         Returns Double of self.
 
         - Returns: Double with value of self.
