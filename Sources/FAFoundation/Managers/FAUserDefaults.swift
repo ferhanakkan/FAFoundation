@@ -8,12 +8,12 @@
 import Foundation
 
 @propertyWrapper
-struct FAUserDefaults<Value> {
+public struct FAUserDefaults<Value> {
     let key: String
 
     private let userDefaults = UserDefaults(suiteName: "faFoundation")
 
-    var wrappedValue: Value? {
+    public var wrappedValue: Value? {
         get {
             userDefaults?.value(forKey: key) as? Value
         }
@@ -26,15 +26,19 @@ struct FAUserDefaults<Value> {
             }
         }
     }
+    
+    public init(key: String) {
+        self.key = key
+    }
 }
 
 @propertyWrapper
-struct FAUserDefaultsCodableValue<Value: Codable> {
+public struct FAUserDefaultsCodableValue<Value: Codable> {
     let key: String
 
     private let userDefaults = UserDefaults(suiteName: "faFoundation")
 
-    var wrappedValue: Value? {
+    public var wrappedValue: Value? {
         get {
             guard let data = userDefaults?.data(forKey: key) else {
                 return nil
@@ -51,26 +55,8 @@ struct FAUserDefaultsCodableValue<Value: Codable> {
             }
         }
     }
-}
-
-final class FAUserDefaultsManager {
-    enum UserDefaultsKey: String {
-        case primitiveExample
-        case encodableExample
-    }
-
-    @FAUserDefaults(key: UserDefaultsKey.primitiveExample.rawValue)
-    var primitiveExample: Bool?
     
-    @FAUserDefaultsCodableValue(key: UserDefaultsKey.encodableExample.rawValue)
-    var encodableExample: Bool?
+    public init(key: String) {
+        self.key = key
+    }
 }
-
-//Example Usage
-//final class TestUserDefaults {
-//    
-//    init() {
-//        FAUserDefaultsManager().encodableExample = false
-//        let result = FAUserDefaultsManager().encodableExample
-//    }
-//}

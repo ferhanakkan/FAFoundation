@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## FAFoundation
 
-Copyright (c) 2022 Ferhan Akkan <ferhan.akkan@vakifbank.com.tr>
+Copyright (c) 2022 Ferhan Akkan <ferhanakkan@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

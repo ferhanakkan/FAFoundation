@@ -9,14 +9,16 @@
     "file": "LICENSE"
   },
   "authors": {
-    "Ferhan Akkan": "ferhan.akkan@vakifbank.com.tr"
+    "Ferhan Akkan": "ferhanakkan@gmail.com"
   },
   "source": {
     "git": "https://github.com/Ferhan Akkan/FAFoundation.git",
     "tag": "0.1.0"
   },
   "platforms": {
-    "ios": "10.0"
+    "ios": "13.0"
   },
-  "source_files": "FAFoundation/Classes/**/*"
+  "source_files": "Sources/FAFoundation/**/*",
+  "swift_versions": "5.7",
+  "swift_version": "5.7"
 }

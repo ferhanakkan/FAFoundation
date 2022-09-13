@@ -83,6 +83,10 @@ extension LocationHandler: CLLocationManagerDelegate {
             delegate?.locationHandler(self, didChangeAuthorizationStatus: .init(status: CLLocationManager.authorizationStatus()))
         }
     }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        delegate?.locationHandler(self, didChangeAuthorizationStatus: .init(status: status))
+    }
 
     func locationManager(
         _ manager: CLLocationManager,
