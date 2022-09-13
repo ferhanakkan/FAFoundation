@@ -9,20 +9,7 @@
 import FAFoundation
 import UIKit
 
-final class UserDefaultsController: UIViewController {
-    
-    // MARK: Properties
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 10
-        stackView.addArrangedSubview(label)
-        stackView.addArrangedSubview(textfield)
-        stackView.addArrangedSubview(retrieveButton)
-        stackView.addArrangedSubview(UIView())
-        return stackView
-    }()
+final class UserDefaultsController: BaseViewController {
     
     private let label: UILabel = {
        let label = UILabel()
@@ -82,8 +69,11 @@ final class UserDefaultsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setLayout()
         label.text = retrieveFromUserDefaults()
+        stackView.addArrangedSubview(label)
+        stackView.addArrangedSubview(textfield)
+        stackView.addArrangedSubview(retrieveButton)
+        stackView.addArrangedSubview(UIView())
     }
 }
 
@@ -94,20 +84,6 @@ private extension UserDefaultsController {
     }
 }
 
-// MARK:  Layout
-private extension UserDefaultsController {
-    func setLayout() {
-        view.backgroundColor = .white
-        view.addSubview(stackView)
-        NSLayoutConstraint.activate([
-            stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-        ])
-    }
-}
-
 // MARK:  Private Actions
 private extension UserDefaultsController {
     @objc func didTapDoneButton() {
@@ -115,7 +91,7 @@ private extension UserDefaultsController {
     }
     
     @objc func didTapSaveButton() {
-        UserDefaultsManager().primitiveExample = textfield.text
+        userDefaulsManager.primitiveExample = textfield.text
     }
     
     @objc func didTapRetrieveButton() {

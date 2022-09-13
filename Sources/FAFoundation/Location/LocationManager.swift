@@ -21,6 +21,7 @@ public extension LocationManagerOutputProtocol {
 
 public protocol LocationManagerProtocol {
     var delegate: LocationManagerOutputProtocol? { get set }
+    var isUpdatingLocation: Bool { get }
     var isLocationServicesEnable: Bool { get }
     var lastLocation: FACoordinate? { get }
     var altitude: Double { get }
@@ -38,12 +39,15 @@ public protocol LocationManagerProtocol {
 
 public final class LocationManager: LocationManagerProtocol {
     
-    private var locationHandler: LocationHandlerProtocol
+    private var locationHandler: LocationHandlerProtocol = LocationHandler()
+    private var startUpdatingWhenPermissionAvaliable: Bool
+    
     public weak var delegate: LocationManagerOutputProtocol?
+    public var isUpdatingLocation: Bool = false
     
     /// Should add " Privacy - Location When In Use Usage Description " and  "Privacy - Location Always and When In Use Usage Description" to be enanble use this service. Also for background locations you have to add backgorund Modes Capability Location updates check.
-    init(locationHandler: LocationHandlerProtocol = LocationHandler()) {
-        self.locationHandler = locationHandler
+    public init(startUpdatingWhenPermissionAvaliable: Bool = false) {
+        self.startUpdatingWhenPermissionAvaliable = startUpdatingWhenPermissionAvaliable
         self.locationHandler.delegate = self
     }
 }
@@ -80,10 +84,16 @@ public extension LocationManager  {
     
     func stopUpdatingLocation() {
         locationHandler.stopUpdatingLocation()
+        isUpdatingLocation = false
     }
     
     func startUpdatingLocation() {
+        guard getAuthorizationStatus() == .avaiable else {
+            delegate?.locationManager(self, didDeniedAuthorizationStatus: getAuthorizationStatus())
+            return
+        }
         locationHandler.startUpdatingLocation()
+        isUpdatingLocation = true
     }
     
     func setBackgroundUpdate(isEnable: Bool) {
@@ -99,6 +109,10 @@ public extension LocationManager  {
     }
     
     func requestAuthorization() {
+        guard getAuthorizationStatus() != .denied else {
+            delegate?.locationManager(self, didDeniedAuthorizationStatus: .denied)
+            return
+        }
         locationHandler.requestAuthorization()
     }
 }
@@ -110,5 +124,6 @@ extension LocationManager: LocationHandlerOutputProtocol {
     
     public func locationHandler(_ handler: LocationHandlerProtocol, didChangeAuthorizationStatus status: FALocationStatus) {
         delegate?.locationManager(self, didChangeAuthorizationStatus: status)
+        if status == .avaiable && startUpdatingWhenPermissionAvaliable { startUpdatingLocation() }
     }
 }

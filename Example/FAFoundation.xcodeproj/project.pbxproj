@@ -16,6 +16,8 @@
 		B4F7FAFA28D082F000A8CAC1 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F7FAF928D082F000A8CAC1 /* HomeTableViewCell.swift */; };
 		B4F7FAFE28D0887E00A8CAC1 /* UserDefaultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F7FAFD28D0887E00A8CAC1 /* UserDefaultsController.swift */; };
 		B4F7FB0028D08FBC00A8CAC1 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F7FAFF28D08FBC00A8CAC1 /* UserDefaultsManager.swift */; };
+		B4F7FB0528D096F900A8CAC1 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F7FB0428D096F900A8CAC1 /* LocationController.swift */; };
+		B4F7FB0828D0974400A8CAC1 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F7FB0728D0974400A8CAC1 /* BaseViewController.swift */; };
 		BC1E48AD5420241272E3B247 /* Pods_FAFoundation_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BD3D5953FFB9D85BF81DE9F /* Pods_FAFoundation_Tests.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +50,8 @@
 		B4F7FAF928D082F000A8CAC1 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		B4F7FAFD28D0887E00A8CAC1 /* UserDefaultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsController.swift; sourceTree = "<group>"; };
 		B4F7FAFF28D08FBC00A8CAC1 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		B4F7FB0428D096F900A8CAC1 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
+		B4F7FB0728D0974400A8CAC1 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BD946B6D5BF00FFE326CBB4D /* Pods-FAFoundation_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FAFoundation_Tests.release.xcconfig"; path = "Target Support Files/Pods-FAFoundation_Tests/Pods-FAFoundation_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		C3615A972D1D3F385C803D87 /* Pods-FAFoundation_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FAFoundation_Example.release.xcconfig"; path = "Target Support Files/Pods-FAFoundation_Example/Pods-FAFoundation_Example.release.xcconfig"; sourceTree = "<group>"; };
 		EFF343959D1C29D3B8B397EA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
@@ -97,6 +101,7 @@
 		607FACD21AFB9204008FA782 /* Example for FAFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				B4F7FB0628D0973C00A8CAC1 /* Components */,
 				B4F7FAF128D0824700A8CAC1 /* Scene */,
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -153,6 +158,7 @@
 		B4F7FAF128D0824700A8CAC1 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				B4F7FB0328D0953C00A8CAC1 /* Location */,
 				B4F7FAFC28D0886000A8CAC1 /* UserDefaults */,
 				B4F7FAF228D0824F00A8CAC1 /* Home */,
 			);
@@ -200,6 +206,22 @@
 				B4F7FAFF28D08FBC00A8CAC1 /* UserDefaultsManager.swift */,
 			);
 			name = UserDefaults;
+			sourceTree = "<group>";
+		};
+		B4F7FB0328D0953C00A8CAC1 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				B4F7FB0428D096F900A8CAC1 /* LocationController.swift */,
+			);
+			name = Location;
+			sourceTree = "<group>";
+		};
+		B4F7FB0628D0973C00A8CAC1 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B4F7FB0728D0974400A8CAC1 /* BaseViewController.swift */,
+			);
+			name = Components;
 			sourceTree = "<group>";
 		};
 		F4685850A056BB526748FF7F /* Pods */ = {
@@ -266,10 +288,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 43THU6L26P;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = 43THU6L26P;
 						LastSwiftMigration = 0900;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -388,7 +412,9 @@
 				B4F7FB0028D08FBC00A8CAC1 /* UserDefaultsManager.swift in Sources */,
 				B4F7FAFA28D082F000A8CAC1 /* HomeTableViewCell.swift in Sources */,
 				B4F7FAF628D082CB00A8CAC1 /* ExampleType.swift in Sources */,
+				B4F7FB0828D0974400A8CAC1 /* BaseViewController.swift in Sources */,
 				B4F7FAFE28D0887E00A8CAC1 /* UserDefaultsController.swift in Sources */,
+				B4F7FB0528D096F900A8CAC1 /* LocationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -526,6 +552,7 @@
 			baseConfigurationReference = 4BD980DCE4F32FB2A7B7687D /* Pods-FAFoundation_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 43THU6L26P;
 				INFOPLIST_FILE = FAFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -542,6 +569,7 @@
 			baseConfigurationReference = C3615A972D1D3F385C803D87 /* Pods-FAFoundation_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 43THU6L26P;
 				INFOPLIST_FILE = FAFoundation/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -557,6 +585,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 274E78D921C4A07A3717A9DE /* Pods-FAFoundation_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 43THU6L26P;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -579,6 +608,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BD946B6D5BF00FFE326CBB4D /* Pods-FAFoundation_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = 43THU6L26P;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
 					"$(inherited)",

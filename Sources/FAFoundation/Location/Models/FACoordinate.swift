@@ -8,8 +8,8 @@
 import CoreLocation
 
 public struct FACoordinate {
-    let lat: Double
-    let lon: Double
+    public let lat: Double
+    public let lon: Double
 }
 
 public extension FACoordinate {

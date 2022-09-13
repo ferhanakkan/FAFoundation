@@ -50,7 +50,7 @@ extension HomeController: UITableViewDelegate {
         case .userDefaults:
             navigationController?.show(UserDefaultsController.init(), sender: nil)
         case .location:
-            break
+            navigationController?.show(LocationController.init(), sender: nil)
         case .networkLayer:
             break
         case .observerPattern:
