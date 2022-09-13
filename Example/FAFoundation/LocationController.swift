@@ -14,7 +14,7 @@ final class LocationController: BaseViewController {
     // MARK: Properties    
     private let label: UILabel = {
        let label = UILabel()
-        label.text = "Location Doesnt Updating"
+        label.text = "Location Doesn't Updating"
         label.numberOfLines = 5
         label.textAlignment = .center
         label.layer.cornerRadius = 8
@@ -54,6 +54,7 @@ final class LocationController: BaseViewController {
     
     init(locationManager: LocationManagerProtocol = LocationManager()) {
         self.locationManager = locationManager
+        
         super.init(nibName: nil, bundle: nil)
         
         self.locationManager.delegate = self
@@ -66,7 +67,6 @@ final class LocationController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         stackView.addArrangedSubview(label)
         stackView.addArrangedSubview(permissionButton)
         stackView.addArrangedSubview(startButton)
@@ -78,7 +78,7 @@ final class LocationController: BaseViewController {
 // MARK:  LocationManagerOutputProtocol
 extension LocationController: LocationManagerOutputProtocol {
     func locationManager(_ manager: LocationManagerProtocol, didUpdateLocation location: FACoordinate) {
-        label.text = String(location.lon.asInt)
+        label.text = location.lon.asString
     }
     
     func locationManager(_ manager: LocationManagerProtocol, didChangeAuthorizationStatus status: FALocationStatus) {
@@ -95,6 +95,7 @@ extension LocationController: LocationManagerOutputProtocol {
             return
         }
         presentPermissionAlert()
+        label.text = "Location Doesn't Updating"
     }
 }
 
