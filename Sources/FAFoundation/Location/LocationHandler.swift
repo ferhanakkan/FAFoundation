@@ -9,7 +9,7 @@ import CoreLocation
 import Foundation
 
 public protocol LocationHandlerOutputProtocol: AnyObject {
-    func locationHandler(_ handler: LocationHandlerProtocol, didUpdateLocation location: FACoordinate)
+    func locationHandler(_ handler: LocationHandlerProtocol, didUpdateLocation location: FACoordinate, didUpdateAccuracy currentAccuracy: FALocationAccuracy)
     func locationHandler(_ handler: LocationHandlerProtocol, didChangeAuthorizationStatus status: FALocationStatus)
 }
 
@@ -93,10 +93,13 @@ extension LocationHandler: CLLocationManagerDelegate {
         didUpdateLocations locations: [CLLocation]
     ) {
         lastKnownLocation = locations.last
-        guard let lastLocation else {
+        guard
+            let lastLocation,
+            let accuracy = lastKnownLocation?.horizontalAccuracy
+        else {
             return
         }
-        delegate?.locationHandler(self, didUpdateLocation: lastLocation)
+        delegate?.locationHandler(self, didUpdateLocation: lastLocation, didUpdateAccuracy: .init(with: accuracy))
     }
 }
 

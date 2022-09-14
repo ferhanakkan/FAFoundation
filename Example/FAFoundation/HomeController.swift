@@ -54,7 +54,7 @@ extension HomeController: UITableViewDelegate {
         case .networkLayer:
             break
         case .observerPattern:
-            break
+            navigationController?.show(ObserverController.init(), sender: nil)
         case .reachability:
             break
         case .phoneNumberFormater:

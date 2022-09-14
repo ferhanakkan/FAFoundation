@@ -11,6 +11,8 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		A59ABC31243374C41EE21BEF /* Pods_FAFoundation_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81A5021CA72C2A2951A53ACB /* Pods_FAFoundation_Example.framework */; };
+		B4C91D7728D2526D009E14C3 /* ObserverController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C91D7628D2526D009E14C3 /* ObserverController.swift */; };
+		B4C91D7928D2527A009E14C3 /* ObserverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C91D7828D2527A009E14C3 /* ObserverViewModel.swift */; };
 		B4F7FAF428D0825B00A8CAC1 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F7FAF328D0825B00A8CAC1 /* HomeController.swift */; };
 		B4F7FAF628D082CB00A8CAC1 /* ExampleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F7FAF528D082CB00A8CAC1 /* ExampleType.swift */; };
 		B4F7FAFA28D082F000A8CAC1 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F7FAF928D082F000A8CAC1 /* HomeTableViewCell.swift */; };
@@ -45,6 +47,8 @@
 		7BD3D5953FFB9D85BF81DE9F /* Pods_FAFoundation_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FAFoundation_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		81A5021CA72C2A2951A53ACB /* Pods_FAFoundation_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FAFoundation_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADF3793010C40D3D2EAEDF9C /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		B4C91D7628D2526D009E14C3 /* ObserverController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverController.swift; sourceTree = "<group>"; };
+		B4C91D7828D2527A009E14C3 /* ObserverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObserverViewModel.swift; sourceTree = "<group>"; };
 		B4F7FAF328D0825B00A8CAC1 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		B4F7FAF528D082CB00A8CAC1 /* ExampleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleType.swift; sourceTree = "<group>"; };
 		B4F7FAF928D082F000A8CAC1 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
@@ -155,9 +159,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B4C91D7528D2525F009E14C3 /* ObserverPattern */ = {
+			isa = PBXGroup;
+			children = (
+				B4C91D7628D2526D009E14C3 /* ObserverController.swift */,
+				B4C91D7828D2527A009E14C3 /* ObserverViewModel.swift */,
+			);
+			name = ObserverPattern;
+			sourceTree = "<group>";
+		};
 		B4F7FAF128D0824700A8CAC1 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				B4C91D7528D2525F009E14C3 /* ObserverPattern */,
 				B4F7FB0328D0953C00A8CAC1 /* Location */,
 				B4F7FAFC28D0886000A8CAC1 /* UserDefaults */,
 				B4F7FAF228D0824F00A8CAC1 /* Home */,
@@ -408,10 +422,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4F7FAF428D0825B00A8CAC1 /* HomeController.swift in Sources */,
+				B4C91D7728D2526D009E14C3 /* ObserverController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 				B4F7FB0028D08FBC00A8CAC1 /* UserDefaultsManager.swift in Sources */,
 				B4F7FAFA28D082F000A8CAC1 /* HomeTableViewCell.swift in Sources */,
 				B4F7FAF628D082CB00A8CAC1 /* ExampleType.swift in Sources */,
+				B4C91D7928D2527A009E14C3 /* ObserverViewModel.swift in Sources */,
 				B4F7FB0828D0974400A8CAC1 /* BaseViewController.swift in Sources */,
 				B4F7FAFE28D0887E00A8CAC1 /* UserDefaultsController.swift in Sources */,
 				B4F7FB0528D096F900A8CAC1 /* LocationController.swift in Sources */,

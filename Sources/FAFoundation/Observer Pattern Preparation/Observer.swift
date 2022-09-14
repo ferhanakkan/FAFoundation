@@ -8,15 +8,15 @@
 import Foundation
 
 // MARK: - Observer
-final class Observer<T> {
+public final class Observer<T> {
     // MARK: Typealis
-    typealias ObserverBlock = (T) -> Void
+    public typealias ObserverBlock = (T) -> Void
 
     // MARK: Properties
-    let block: ObserverBlock
-    let queue: DispatchQueue
+    public let block: ObserverBlock
+    public let queue: DispatchQueue
 
-    weak var observer: AnyObject?
+    public weak var observer: AnyObject?
 
     // MARK: Init
     init(observer: AnyObject, queue: DispatchQueue, block: @escaping ObserverBlock) {

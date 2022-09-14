@@ -8,7 +8,7 @@
 import Foundation
 
 public protocol LocationManagerOutputProtocol: AnyObject {
-    func locationManager(_ manager: LocationManagerProtocol, didUpdateLocation location: FACoordinate)
+    func locationManager(_ manager: LocationManagerProtocol, didUpdateLocation location: FACoordinate, didUpdateAccuracy accuracy: FALocationAccuracy)
     func locationManager(_ manager: LocationManagerProtocol, didChangeAuthorizationStatus status: FALocationStatus)
     func locationManager(_ manager: LocationManagerProtocol, didDeniedAuthorizationStatus status: FALocationStatus)
 }
@@ -118,8 +118,8 @@ public extension LocationManager  {
 }
 
 extension LocationManager: LocationHandlerOutputProtocol {
-    public func locationHandler(_ handler: LocationHandlerProtocol, didUpdateLocation location: FACoordinate) {
-        delegate?.locationManager(self, didUpdateLocation: location)
+    public func locationHandler(_ handler: LocationHandlerProtocol, didUpdateLocation location: FACoordinate, didUpdateAccuracy currentAccuracy: FALocationAccuracy) {
+        delegate?.locationManager(self, didUpdateLocation: location, didUpdateAccuracy: currentAccuracy)
     }
     
     public func locationHandler(_ handler: LocationHandlerProtocol, didChangeAuthorizationStatus status: FALocationStatus) {

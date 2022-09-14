@@ -15,7 +15,7 @@ import Foundation
 //    extern const CLLocationAccuracy kCLLocationAccuracyKilometer; // (raw value: 1000)
 //    extern const CLLocationAccuracy kCLLocationAccuracyThreeKilometers; // (raw value: 3000)
     
-    enum FALocationAccuracy {
+  public enum FALocationAccuracy {
         case bestForNavigation
         case best
         case nearestTenMeters

@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - Observable
-final class Observable<T> {
+public final class Observable<T> {
     // MARK: Properties
     private var observers = [Observer<T>]()
 
@@ -23,7 +23,7 @@ final class Observable<T> {
         self.value = value
     }
 
-    func observe(
+    public func observe(
         on observer: AnyObject,
         queue: DispatchQueue = .main,
         observerBlock: @escaping Observer<T>.ObserverBlock
@@ -37,7 +37,7 @@ final class Observable<T> {
         )
     }
 
-    func observeAndFire(
+    public func observeAndFire(
         on observer: AnyObject,
         queue: DispatchQueue = .main,
         observerBlock: @escaping Observer<T>.ObserverBlock
@@ -46,11 +46,11 @@ final class Observable<T> {
         observerBlock(value)
     }
 
-    func remove(observer: AnyObject) {
+    public func remove(observer: AnyObject) {
         observers = observers.filter({ $0.observer !== observer })
     }
 
-    func removeAllObservers() {
+    public func removeAllObservers() {
         observers = []
     }
 

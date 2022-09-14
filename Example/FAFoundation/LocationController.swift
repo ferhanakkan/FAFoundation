@@ -77,8 +77,14 @@ final class LocationController: BaseViewController {
 
 // MARK:  LocationManagerOutputProtocol
 extension LocationController: LocationManagerOutputProtocol {
-    func locationManager(_ manager: LocationManagerProtocol, didUpdateLocation location: FACoordinate) {
-        label.text = location.lon.asString
+    func locationManager(_ manager: FAFoundation.LocationManagerProtocol, didUpdateLocation location: FAFoundation.FACoordinate, didUpdateAccuracy accuracy: FAFoundation.FALocationAccuracy) {
+        
+        label.text = """
+            speed = \(manager.speed)
+            latitude = \(location.lat.asString.orEmptyString)
+            longitude = \(location.lon.asString.orEmptyString)
+            accuracy = \(accuracy)
+        """
     }
     
     func locationManager(_ manager: LocationManagerProtocol, didChangeAuthorizationStatus status: FALocationStatus) {
@@ -91,7 +97,7 @@ extension LocationController: LocationManagerOutputProtocol {
     }
     
     func locationManager(_ manager: LocationManagerProtocol, didDeniedAuthorizationStatus status: FALocationStatus) {
-        guard status == .denied else {
+        guard status != .avaiable else {
             return
         }
         presentPermissionAlert()
