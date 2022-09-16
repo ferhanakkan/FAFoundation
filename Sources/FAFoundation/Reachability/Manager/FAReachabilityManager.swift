@@ -9,26 +9,31 @@ import Network
 
 public protocol FAReachabilityManagerProtocol {
     var isReachable: Bool { get }
-    func listenReachability(completion: @escaping FAReachabilityCompletion)
-    func checkReachability(completion: @escaping FAReachabilityCompletion)
-    func stopReachability()
-    func isWiFiEnabled() -> Bool
+    var connectionType: FAReachabilityType { get }
+    func listenReachabilityChanges(_ queue: DispatchQueue, completion: @escaping FAReachabilityCompletion)
+//    func isWiFiEnabled() -> Bool
 }
 
-final class FAReachabilityManager {
+public final class FAReachabilityManager {
     // MARK: - Enums
     private enum Constants {
         static let awdl = "awdl0"
     }
 
     // MARK: - Properties
-    var isReachable: Bool {
-        let monitor = NWPathMonitor()
-        monitor.start(queue: .main)
+    public var isReachable: Bool {
         return monitor.currentPath.status == .satisfied
     }
     
-    private let monitor = NWPathMonitor()
+    public var connectionType: FAReachabilityType {
+        guard let interface = NWInterface.InterfaceType.allCases.first(where: { [weak self] in
+            guard let self = self else { return false }
+            return self.monitor.currentPath.usesInterfaceType($0)}) else {
+            return .noConnection
+        }
+        return getInterfaceType(with: interface)
+    }
+    
     private var status: FAReachabilityStatus {
         switch monitor.currentPath.status {
         case .satisfied:
@@ -37,69 +42,56 @@ final class FAReachabilityManager {
             return .requiresConnection
         }
     }
+    
+    private let monitor: NWPathMonitor
 
     // MARK: - Initialization
-    init() {
-        monitor.start(queue: .global(qos: .background))
+    public init(preferedQueue: DispatchQueue = .main) {
+        monitor = .init()
+        monitor.start(queue: preferedQueue)
     }
 
     // MARK: - Deinitialization
     deinit {
-        stopReachability()
+        monitor.cancel()
     }
 }
 
 // MARK: - FAReachabilityManagerProtocol
 extension FAReachabilityManager: FAReachabilityManagerProtocol {
-    func listenReachability(completion: @escaping FAReachabilityCompletion) {
+    public func listenReachabilityChanges(_ queue: DispatchQueue, completion: @escaping FAReachabilityCompletion) {
         monitor.pathUpdateHandler = { [weak self] path in
             guard
                 let self = self,
-                let interface = NWInterface.InterfaceType.allCases.first(where: { self.monitor.currentPath.usesInterfaceType($0)})
+                let interface = NWInterface.InterfaceType.allCases.first(where: { [weak self] in
+                    guard let self = self else { return false }
+                    return self.monitor.currentPath.usesInterfaceType($0)})
             else {
                 completion(.init(type: .noConnection, status: .requiresConnection))
                 return
             }
             completion(.init(type: self.getInterfaceType(with: interface), status: self.status))
         }
-        monitor.start(queue: .global(qos: .background))
-    }
-    
-    func checkReachability(completion: @escaping FAReachabilityCompletion) {
-        let monitor = NWPathMonitor()
-        monitor.start(queue: .global(qos: .background))
-        defer {
-            monitor.cancel()
-        }
-
-        guard let interface = NWInterface.InterfaceType.allCases.first(where: { monitor.currentPath.usesInterfaceType($0) }) else {
-            completion(.init(type: .noConnection, status: .requiresConnection))
-            return
-        }
-        completion(.init(type: getInterfaceType(with: interface), status: status))
     }
 
-    func stopReachability() {
-        monitor.cancel()
-    }
-
-    func isWiFiEnabled() -> Bool {
-        var addresses: [String] = []
-        var ifaddr: UnsafeMutablePointer<ifaddrs>?
-        guard getifaddrs(&ifaddr) == .zero,
-              let firstAddress = ifaddr else { return false }
-        for pointer in sequence(first: firstAddress, next: { $0.pointee.ifa_next }) {
-            addresses.append(String(cString: pointer.pointee.ifa_name))
-        }
-
-        var counts: [String: Int] = [:]
-        for item in addresses {
-            counts[item] = (counts[item].orZero) + 1
-        }
-        freeifaddrs(ifaddr)
-        guard let count = counts[Constants.awdl] else { return false }
-        return count > 1
-    }
+    // TODO: Should refactor always returns ture
+//    public func isWiFiEnabled() -> Bool {
+//        var addresses: [String] = []
+//        var ifaddr: UnsafeMutablePointer<ifaddrs>?
+//        guard getifaddrs(&ifaddr) == .zero,
+//              let firstAddress = ifaddr else { return false }
+//        for pointer in sequence(first: firstAddress, next: { $0.pointee.ifa_next }) {
+//            addresses.append(String(cString: pointer.pointee.ifa_name))
+//        }
+//
+//        var counts: [String: Int] = [:]
+//        for item in addresses {
+//            counts[item] = (counts[item].orZero) + 1
+//        }
+//        freeifaddrs(ifaddr)
+//        guard let count = counts[Constants.awdl] else { return false }
+//        return count > 1
+//    }
 }
 
 private extension FAReachabilityManager {
@@ -118,5 +110,5 @@ private extension FAReachabilityManager {
 }
 
 extension NWInterface.InterfaceType: CaseIterable {
-    public static var allCases: [NWInterface.InterfaceType] = NWInterface.InterfaceType.allCases
+    public static var allCases: [NWInterface.InterfaceType] = [.cellular, .loopback, .other, .wifi, .wiredEthernet]
 }

@@ -95,12 +95,12 @@
 		2541B0509791F97795181F2983362935 /* Sequence+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Sequence+Extensions.swift"; sourceTree = "<group>"; };
 		26515FE02037C5CEA5FC0A761421A813 /* AnyOptional.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AnyOptional.swift; sourceTree = "<group>"; };
 		26DD8C4BD81C862D5B8E73F43CA490BF /* FAReachabilityType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FAReachabilityType.swift; sourceTree = "<group>"; };
-		27334A1CABDF9D3437FF90B350746595 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		27334A1CABDF9D3437FF90B350746595 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		27F9B3686721BB7921D560656D9E852B /* Encodable+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Encodable+Extensions.swift"; sourceTree = "<group>"; };
 		2B9B5A5B17B682180543BFE1187EFFC1 /* Completions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = Completions.swift; sourceTree = "<group>"; };
 		317B523FB204A50EA243470CCA937714 /* FALocationStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FALocationStatus.swift; sourceTree = "<group>"; };
 		3652A51BFBA016366E6165692DAF2462 /* Dictonary+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Dictonary+Extensions.swift"; sourceTree = "<group>"; };
-		3770EA385A9F12AD3590EFDD5F547077 /* FAFoundation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = FAFoundation.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		3770EA385A9F12AD3590EFDD5F547077 /* FAFoundation.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = FAFoundation.podspec; sourceTree = "<group>"; tabWidth = 2; };
 		3DF9BCCDFEB43F578AF799AFB5B1E631 /* Pods-FAFoundation_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-FAFoundation_Example-dummy.m"; sourceTree = "<group>"; };
 		429EA0F7F92A0262C2A7121C899B2688 /* Integer+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Integer+Extensions.swift"; sourceTree = "<group>"; };
 		46C786092403A03578EE09246744A8B9 /* FANetworkManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FANetworkManager.swift; sourceTree = "<group>"; };
@@ -131,13 +131,13 @@
 		90F621861628BB9371B0659DDB9A623B /* Pods-FAFoundation_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FAFoundation_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		9261FEAE4F85724C21CAE725065AC5D2 /* FAFoundation-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FAFoundation-dummy.m"; sourceTree = "<group>"; };
 		9498F9B9AE3ED248AEC08F70BEC15272 /* Pods-FAFoundation_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FAFoundation_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9E3F92A0E27AC45637E5088029445F10 /* FAHTTPTask.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FAHTTPTask.swift; sourceTree = "<group>"; };
 		9FBBD4E869F8A65246282856B648824C /* FAStatusCodeType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FAStatusCodeType.swift; sourceTree = "<group>"; };
 		A56F064006E4A6B464B119F3AB3F7E10 /* Pods-FAFoundation_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-FAFoundation_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		AC5EAB96E26366683E1994F408BE7D9C /* URLParameterEncoding.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = URLParameterEncoding.swift; sourceTree = "<group>"; };
 		B067433206E07350A8D858E0843E96BD /* FAEndPointType.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FAEndPointType.swift; sourceTree = "<group>"; };
-		B23F4CD244C5443B84E25BAA731D7007 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		B23F4CD244C5443B84E25BAA731D7007 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		C4ABD08E79BA01D19A91017B4782CEC6 /* FAJSONParameterEncoder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FAJSONParameterEncoder.swift; sourceTree = "<group>"; };
 		C5A666807ED719CF66F795683769F1D7 /* Pods-FAFoundation_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-FAFoundation_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
 		CA9E91D785B9C5A259F4D89F2DE95B6B /* Pods-FAFoundation_Tests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-FAFoundation_Tests-umbrella.h"; sourceTree = "<group>"; };
@@ -199,7 +199,6 @@
 			children = (
 				46C786092403A03578EE09246744A8B9 /* FANetworkManager.swift */,
 			);
-			name = Manager;
 			path = Manager;
 			sourceTree = "<group>";
 		};
@@ -209,7 +208,6 @@
 				F92E657E361ED592B55C3A5382CC81A6 /* FAHTTPMethod.swift */,
 				9E3F92A0E27AC45637E5088029445F10 /* FAHTTPTask.swift */,
 			);
-			name = Request;
 			path = Request;
 			sourceTree = "<group>";
 		};
@@ -220,7 +218,6 @@
 				009A1845FA6E2EEF7D23F6B999E34BEA /* Request */,
 				C23DFA5AC62FB6DB9DC2E78CF7F3B706 /* Response */,
 			);
-			name = HTTP;
 			path = HTTP;
 			sourceTree = "<group>";
 		};
@@ -255,7 +252,6 @@
 				90E4EDCD8795FE6FD65615C03FEBB4D7 /* FAReachabilityStatus.swift */,
 				26DD8C4BD81C862D5B8E73F43CA490BF /* FAReachabilityType.swift */,
 			);
-			name = Reachability;
 			path = Reachability;
 			sourceTree = "<group>";
 		};
@@ -264,7 +260,6 @@
 			children = (
 				7B3C7149350FAEC5E2AAF1959547A92C /* FACoordinate.swift */,
 			);
-			name = Models;
 			path = Models;
 			sourceTree = "<group>";
 		};
@@ -284,7 +279,6 @@
 				B067433206E07350A8D858E0843E96BD /* FAEndPointType.swift */,
 				4780DE837A0C65732E2E39BC003DAF6C /* FARouter.swift */,
 			);
-			name = Service;
 			path = Service;
 			sourceTree = "<group>";
 		};
@@ -303,7 +297,6 @@
 			children = (
 				CD506F3BA04F7FA42326C8E698587154 /* FAReachabilityManager.swift */,
 			);
-			name = Manager;
 			path = Manager;
 			sourceTree = "<group>";
 		};
@@ -321,7 +314,6 @@
 				4F5D9536B217F33F7F846E3076A36774 /* FALocationAccuracy.swift */,
 				317B523FB204A50EA243470CCA937714 /* FALocationStatus.swift */,
 			);
-			name = Enums;
 			path = Enums;
 			sourceTree = "<group>";
 		};
@@ -341,7 +333,6 @@
 				0702A266A58BF099D5F3D1ADB1DF37E9 /* FAParameterEncoding.swift */,
 				AC5EAB96E26366683E1994F408BE7D9C /* URLParameterEncoding.swift */,
 			);
-			name = Encoding;
 			path = Encoding;
 			sourceTree = "<group>";
 		};
@@ -386,7 +377,6 @@
 			children = (
 				FA1CB97F37727BC8F15D850EEEDCE2B5 /* FAHTTPHeader.swift */,
 			);
-			name = Headers;
 			path = Headers;
 			sourceTree = "<group>";
 		};
@@ -433,7 +423,6 @@
 				8285131AE6234CE0CDF5C1B9D55917D9 /* FAMultipartMedia.swift */,
 				7700DCD0E96CDE88176B73A68E2E47AF /* FAMultipartParameter.swift */,
 			);
-			name = Multipart;
 			path = Multipart;
 			sourceTree = "<group>";
 		};
@@ -452,7 +441,6 @@
 				DB2AB936845DBD0B90C91F91BD0D239A /* FANetworkResponse.swift */,
 				9FBBD4E869F8A65246282856B648824C /* FAStatusCodeType.swift */,
 			);
-			name = Response;
 			path = Response;
 			sourceTree = "<group>";
 		};
@@ -528,7 +516,6 @@
 				244315352B36CACC91F671F4E4759148 /* FANetworkLogger.swift */,
 				BB8BE19CB99021690B5CCE9924B33FF8 /* Multipart */,
 			);
-			name = Utils;
 			path = Utils;
 			sourceTree = "<group>";
 		};
@@ -979,8 +966,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
