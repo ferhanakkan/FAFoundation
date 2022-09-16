@@ -114,7 +114,7 @@
 		5C57870649B039D8F54704229B2828BD /* FAFoundation-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FAFoundation-Info.plist"; sourceTree = "<group>"; };
 		66B5E3B26BA698F231B47779A3161561 /* Double+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		6C828E571777C7BCDC4A2A5CEC6EDB23 /* FAFoundation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FAFoundation-prefix.pch"; sourceTree = "<group>"; };
-		6DD375645524DD2D719B97FAC3B9575D /* Pods-FAFoundation_Tests */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-FAFoundation_Tests"; path = Pods_FAFoundation_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6DD375645524DD2D719B97FAC3B9575D /* Pods_FAFoundation_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FAFoundation_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		72570B37863D2ADB3E85E10D7A1027C7 /* Pods-FAFoundation_Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-FAFoundation_Example.modulemap"; sourceTree = "<group>"; };
 		7261854BA52C6B84DA90DE96A7334969 /* ObserverPatternExample.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ObserverPatternExample.swift; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -124,7 +124,7 @@
 		8453B4DC52EDFC2A198FE9AEBB2E7526 /* Pods-FAFoundation_Example-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-FAFoundation_Example-Info.plist"; sourceTree = "<group>"; };
 		84F9AA7B081920130D0A29F9FE9B0D49 /* LocationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		853CB46C2C8C35B0EDA4BE599587EBB1 /* Comparable+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Comparable+Extensions.swift"; sourceTree = "<group>"; };
-		859B6529EC6F94E5427A44DFF9C09274 /* Pods-FAFoundation_Example */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = "Pods-FAFoundation_Example"; path = Pods_FAFoundation_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		859B6529EC6F94E5427A44DFF9C09274 /* Pods_FAFoundation_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FAFoundation_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87DB00E70D3193090AEC7B4B1E251CA0 /* Data+Extensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
 		8CFF4EC6779EBCBD9AB3C046C930879F /* Thread+Extesions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = "Thread+Extesions.swift"; sourceTree = "<group>"; };
 		90E4EDCD8795FE6FD65615C03FEBB4D7 /* FAReachabilityStatus.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FAReachabilityStatus.swift; sourceTree = "<group>"; };
@@ -286,8 +286,8 @@
 			isa = PBXGroup;
 			children = (
 				5A42BED0ED59AC041AAB4F7BC7AC5E3D /* FAFoundation */,
-				859B6529EC6F94E5427A44DFF9C09274 /* Pods-FAFoundation_Example */,
-				6DD375645524DD2D719B97FAC3B9575D /* Pods-FAFoundation_Tests */,
+				859B6529EC6F94E5427A44DFF9C09274 /* Pods_FAFoundation_Example.framework */,
+				6DD375645524DD2D719B97FAC3B9575D /* Pods_FAFoundation_Tests.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -613,7 +613,7 @@
 			);
 			name = "Pods-FAFoundation_Example";
 			productName = Pods_FAFoundation_Example;
-			productReference = 859B6529EC6F94E5427A44DFF9C09274 /* Pods-FAFoundation_Example */;
+			productReference = 859B6529EC6F94E5427A44DFF9C09274 /* Pods_FAFoundation_Example.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		D8748BB48C3E374BA031A120D3C78DEA /* Pods-FAFoundation_Tests */ = {
@@ -632,7 +632,7 @@
 			);
 			name = "Pods-FAFoundation_Tests";
 			productName = Pods_FAFoundation_Tests;
-			productReference = 6DD375645524DD2D719B97FAC3B9575D /* Pods-FAFoundation_Tests */;
+			productReference = 6DD375645524DD2D719B97FAC3B9575D /* Pods_FAFoundation_Tests.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -795,7 +795,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-FAFoundation_Tests/Pods-FAFoundation_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-FAFoundation_Tests/Pods-FAFoundation_Tests.modulemap";
@@ -828,7 +828,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-FAFoundation_Tests/Pods-FAFoundation_Tests-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-FAFoundation_Tests/Pods-FAFoundation_Tests.modulemap";
@@ -893,7 +893,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-FAFoundation_Example/Pods-FAFoundation_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-FAFoundation_Example/Pods-FAFoundation_Example.modulemap";
@@ -961,7 +961,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1020,7 +1020,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "Target Support Files/Pods-FAFoundation_Example/Pods-FAFoundation_Example-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-FAFoundation_Example/Pods-FAFoundation_Example.modulemap";
@@ -1090,7 +1090,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;

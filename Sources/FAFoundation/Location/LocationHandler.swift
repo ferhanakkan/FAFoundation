@@ -94,7 +94,7 @@ extension LocationHandler: CLLocationManagerDelegate {
     ) {
         lastKnownLocation = locations.last
         guard
-            let lastLocation,
+            let lastLocation = lastLocation,
             let accuracy = lastKnownLocation?.horizontalAccuracy
         else {
             return
@@ -106,7 +106,7 @@ extension LocationHandler: CLLocationManagerDelegate {
 extension LocationHandler: LocationHandlerProtocol {
     
     func getDistanceToLastKnowLocation(with location: FACoordinate) -> Double? {
-        guard let lastKnownLocation else {
+        guard let lastKnownLocation = lastKnownLocation else {
             return nil
         }
         return lastKnownLocation.distance(from: .init(latitude: location.lat, longitude: location.lon))

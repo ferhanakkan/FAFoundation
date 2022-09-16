@@ -52,7 +52,8 @@ extension HomeController: UITableViewDelegate {
         case .location:
             navigationController?.show(LocationController.init(), sender: nil)
         case .networkLayer:
-            navigationController?.show(NetworkLayerController.init(), sender: nil)
+//            navigationController?.show(NetworkLayerController.init(), sender: nil)
+            break
         case .observerPattern:
             navigationController?.show(ObserverController.init(), sender: nil)
         case .reachability:
