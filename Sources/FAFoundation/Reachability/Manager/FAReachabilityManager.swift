@@ -11,6 +11,8 @@ public protocol FAReachabilityManagerProtocol {
     var isReachable: Bool { get }
     var connectionType: FAReachabilityType { get }
     func listenReachabilityChanges(_ queue: DispatchQueue, completion: @escaping FAReachabilityCompletion)
+    func removeListenReachability()
+    func continueListenReachability()
 //    func isWiFiEnabled() -> Bool
 }
 
@@ -43,6 +45,7 @@ public final class FAReachabilityManager {
         }
     }
     
+    private var isListenEnable: Bool = false
     private let monitor: NWPathMonitor
 
     // MARK: - Initialization
@@ -54,24 +57,36 @@ public final class FAReachabilityManager {
     // MARK: - Deinitialization
     deinit {
         monitor.cancel()
+        print("Reachablility Deinit")
     }
 }
 
 // MARK: - FAReachabilityManagerProtocol
 extension FAReachabilityManager: FAReachabilityManagerProtocol {
     public func listenReachabilityChanges(_ queue: DispatchQueue, completion: @escaping FAReachabilityCompletion) {
+        isListenEnable = true
         monitor.pathUpdateHandler = { [weak self] path in
             guard
+                (self?.isListenEnable).orFalse,
                 let self = self,
                 let interface = NWInterface.InterfaceType.allCases.first(where: { [weak self] in
                     guard let self = self else { return false }
                     return self.monitor.currentPath.usesInterfaceType($0)})
             else {
+                if !(self?.isListenEnable).orFalse { return }
                 completion(.init(type: .noConnection, status: .requiresConnection))
                 return
             }
             completion(.init(type: self.getInterfaceType(with: interface), status: self.status))
         }
+    }
+    
+    public func removeListenReachability() {
+        isListenEnable = false
+    }
+    
+    public func continueListenReachability() {
+        isListenEnable = true
     }
 
     // TODO: Should refactor always returns ture

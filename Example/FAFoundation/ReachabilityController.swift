@@ -22,14 +22,6 @@ final class ReachabilityController: BaseViewController {
        return label
     }()
     
-//    private lazy var checkWifiIsEnableButton: UIButton = {
-//        let button = UIButton(type: .roundedRect)
-//        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
-//        button.setTitle("Check Is Wifi Enable", for: .normal)
-//        button.addTarget(self, action: #selector(didTapCheckWifi), for: .touchUpInside)
-//        return button
-//    }()
-    
     private lazy var checkIsReachableButton: UIButton = {
         let button = UIButton(type: .roundedRect)
         button.titleLabel?.font = .boldSystemFont(ofSize: 18)
@@ -43,6 +35,22 @@ final class ReachabilityController: BaseViewController {
         button.titleLabel?.font = .boldSystemFont(ofSize: 18)
         button.setTitle("Listen Reachability Changes", for: .normal)
         button.addTarget(self, action: #selector(didTapListenReachability), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var removeListenReachability: UIButton = {
+        let button = UIButton(type: .roundedRect)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        button.setTitle("Remove Reachability Changes", for: .normal)
+        button.addTarget(self, action: #selector(didTapRemoveListenReachability), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var continueListenReachability: UIButton = {
+        let button = UIButton(type: .roundedRect)
+        button.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        button.setTitle("Continue Reachability Changes", for: .normal)
+        button.addTarget(self, action: #selector(didTapContinueListenReachability), for: .touchUpInside)
         return button
     }()
     
@@ -69,6 +77,8 @@ final class ReachabilityController: BaseViewController {
         stackView.addArrangedSubview(label)
         stackView.addArrangedSubview(checkIsReachableButton)
         stackView.addArrangedSubview(listenReachability)
+        stackView.addArrangedSubview(removeListenReachability)
+        stackView.addArrangedSubview(continueListenReachability)
         stackView.addArrangedSubview(UIView())
     }
 }
@@ -96,8 +106,16 @@ private extension ReachabilityController {
         reachabilityManager.listenReachabilityChanges(.main) { [weak self] reachability in
             self?.showAlert(
                 title: "Listen Reachability",
-                message: "Reachability Changed Status  \(reachability.status), Type: \(reachability.type), Connection is reachable  \(self?.reachabilityManager.isReachable)"
+                message: "Reachability Changed Status  \(reachability.status), Type: \(reachability.type), Connection is reachable  \((self?.reachabilityManager.isReachable).orFalse)"
             )
         }
+    }
+    
+    @objc func didTapRemoveListenReachability() {
+        reachabilityManager.removeListenReachability()
+    }
+    
+    @objc func didTapContinueListenReachability() {
+        reachabilityManager.continueListenReachability()
     }
 }
