@@ -52,7 +52,7 @@ extension HomeController: UITableViewDelegate {
         case .location:
             navigationController?.show(LocationController.init(), sender: nil)
         case .networkLayer:
-            break
+            navigationController?.show(NetworkLayerController.init(), sender: nil)
         case .observerPattern:
             navigationController?.show(ObserverController.init(), sender: nil)
         case .reachability:
