@@ -15,5 +15,4 @@ enum ExampleType: String, CaseIterable {
     case observerPattern = "Observer Pattern Example"
     case reachability = "Reachability Example"
     case phoneNumberFormater = "Phone Number Formater Example"
-    case usefulExtensions = "Useful Extensions Example"
 }

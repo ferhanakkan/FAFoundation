@@ -9,7 +9,7 @@ import Foundation
 
 public enum FAPhoneNumberFormat: String {
     case first = "+## (###) ###-####"
-    case second = "### ###-####"
+    case second = "### ##### ##"
 }
 
 /// TextFormatter protocol, Provides a formatting standard.
@@ -26,7 +26,7 @@ public protocol FATextFormatter {
 
      - Returns: Formatted string
      */
-    func format(replacementString: String, numbersAlredyInField: String) -> String
+    func format(replacementString: String) -> String
 }
 
 /// Class responsible of formatting phone numbers.
@@ -50,7 +50,7 @@ public final class FAPhoneNumberFormater: FATextFormatter {
     }
 
     /// TextFormatter protocol.
-    public func format(replacementString: String, numbersAlredyInField: String) -> String {
+    public func format(replacementString: String) -> String {
         let maxCharacterCount = (textFormat.rawValue.components(separatedBy: "#").count - 1)
         var plainString = replacementString.components(separatedBy: CharacterSet.decimalDigits.inverted).joined(separator: "").description
 

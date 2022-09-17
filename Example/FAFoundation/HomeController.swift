@@ -52,16 +52,13 @@ extension HomeController: UITableViewDelegate {
         case .location:
             navigationController?.show(LocationController.init(), sender: nil)
         case .networkLayer:
-//            navigationController?.show(NetworkLayerController.init(), sender: nil)
-            break
+            navigationController?.show(NetworkLayerController.init(), sender: nil)
         case .observerPattern:
             navigationController?.show(ObserverController.init(), sender: nil)
         case .reachability:
             navigationController?.show(ReachabilityController.init(), sender: nil)
         case .phoneNumberFormater:
-            break
-        case .usefulExtensions:
-            break
+            navigationController?.show(PhoneFormaterController.init(), sender: nil)
         }
         navigationController?.viewControllers.last?.title = titles[indexPath.row].rawValue
     }
