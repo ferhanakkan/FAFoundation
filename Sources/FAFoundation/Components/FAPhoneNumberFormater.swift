@@ -10,6 +10,7 @@ import Foundation
 public enum FAPhoneNumberFormat: String {
     case first = "+## (###) ###-####"
     case second = "### ##### ##"
+    case third = "(###) ### ## ##"
 }
 
 /// TextFormatter protocol, Provides a formatting standard.
