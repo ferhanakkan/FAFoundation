@@ -8,6 +8,7 @@
 import Foundation
 
 public typealias VoidCompletion = (() -> ())
+public typealias ValueCompletion<T> = ((T) -> Void)
 public typealias StringCompletion = ((String) -> Void)
 
 public typealias FAReachabilityCompletion = ((FAReachability) -> Void)
