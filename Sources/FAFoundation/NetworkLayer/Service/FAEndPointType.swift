@@ -8,6 +8,7 @@
 import Foundation
 
 public protocol FAEndpoint: FAAPI {
+
     associatedtype ResponseType: Decodable
 
     var path: String { get }
@@ -20,6 +21,7 @@ public protocol FAEndpoint: FAAPI {
 }
 
 public extension FAEndpoint {
+
     var headers: FAHTTPHeaders? {
         nil
     }
@@ -39,6 +41,7 @@ public extension FAEndpoint {
 }
 
 public protocol FAAPI {
+
     var baseHeaders: FAHTTPHeaders? { get }
     var baseURL: URL { get }
     var timeout: TimeInterval { get }
