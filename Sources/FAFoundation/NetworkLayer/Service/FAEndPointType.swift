@@ -19,7 +19,7 @@ public protocol FAEndpoint: FAAPI {
     var headers: FAHTTPHeaders? { get }
 }
 
-extension FAEndpoint {
+public extension FAEndpoint {
     var headers: FAHTTPHeaders? {
         nil
     }
@@ -33,7 +33,7 @@ extension FAEndpoint {
         return .init(headers: allHeaders)
     }
 
-    public var timeout: TimeInterval {
+    var timeout: TimeInterval {
         30
     }
 }
