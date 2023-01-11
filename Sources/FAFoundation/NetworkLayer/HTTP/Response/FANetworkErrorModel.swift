@@ -7,9 +7,13 @@
 
 import Foundation
 
-public enum FANetworkError: String, Error {
+public enum FANetworkError: Error {
     case serviceError
-    case decodingError
+    case decodingError(Data)
     case timeOut
     case noInternetConnection
+
+    var userFriendlyDescription: String {
+        return "TODO"
+    }
 }

@@ -67,7 +67,7 @@ struct FANetworkManager: FANetworkManagerProtocol {
                     completion(.success(networkResponse))
                 } catch {
                     print(error)
-                    completion(.failure(.decodingError))
+                    completion(.failure(.decodingError(data)))
                 }
             } else {
                 /// - TODO: Chechk if response allways can be converted to HTTPURLResponse
