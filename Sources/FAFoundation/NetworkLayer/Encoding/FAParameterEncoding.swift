@@ -19,9 +19,12 @@ public enum FAParameterEncoding {
     case urlAndJsonEncoding
     case bodyAsStringEncoding(Data)
 
-    public func encode(urlRequest: inout URLRequest,
-                       bodyParameters: FAParameters?,
-                       urlParameters: FAParameters?) throws {
+    public func encode(
+        urlRequest: inout URLRequest,
+        bodyParameters: FAParameters?,
+        urlParameters: FAParameters?,
+        bodyDataParameters: Data?
+    ) throws {
         do {
             switch self {
             case .urlEncoding:
@@ -37,8 +40,8 @@ public enum FAParameterEncoding {
                       let urlParameters = urlParameters else { return }
                 try FAURLParameterEncoder().encode(urlRequest: &urlRequest, with: urlParameters)
                 try FAJSONParameterEncoder().encode(urlRequest: &urlRequest, with: bodyParameters)
-            case .bodyAsStringEncoding(let data):
-                urlRequest.httpBody = data
+            case .bodyAsStringEncoding(_):
+                urlRequest.httpBody = bodyDataParameters
             }
         } catch {
             throw error

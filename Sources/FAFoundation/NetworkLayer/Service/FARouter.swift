@@ -45,24 +45,32 @@ class FATRouter: FANetworkRouter {
             case .request:
                 request.setValue("application/json", forHTTPHeaderField: "Content-Type")
 
-            case .requestParameters(let bodyParameters,
-                                    let bodyEncoding,
-                                    let urlParameters):
+            case .requestParameters(
+                let bodyParameters,
+                let bodyEncoding,
+                let urlParameters,
+                let bodyDataParameters
+            ):
 
                 try self.configureParameters(bodyParameters: bodyParameters,
                                              bodyEncoding: bodyEncoding,
                                              urlParameters: urlParameters,
+                                             bodyDataParameters: bodyDataParameters,
                                              request: &request)
 
-            case .requestParametersAndHeaders(let bodyParameters,
-                                              let bodyEncoding,
-                                              let urlParameters,
-                                              let additionalHeaders):
+            case .requestParametersAndHeaders(
+                let bodyParameters,
+                let bodyEncoding,
+                let urlParameters,
+                let additionalHeaders,
+                let bodyDataParameters
+            ):
 
                 self.addAdditionalHeaders(additionalHeaders, request: &request)
                 try self.configureParameters(bodyParameters: bodyParameters,
                                              bodyEncoding: bodyEncoding,
                                              urlParameters: urlParameters,
+                                             bodyDataParameters: bodyDataParameters,
                                              request: &request)
 
             case .requestMultipartParameters(let multipartParameters, let urlParameters):
@@ -77,10 +85,15 @@ class FATRouter: FANetworkRouter {
     fileprivate func configureParameters(bodyParameters: FAParameters?,
                                          bodyEncoding: FAParameterEncoding,
                                          urlParameters: FAParameters?,
+                                         bodyDataParameters: Data?,
                                          request: inout URLRequest) throws {
         do {
-            try bodyEncoding.encode(urlRequest: &request,
-                                    bodyParameters: bodyParameters, urlParameters: urlParameters)
+            try bodyEncoding.encode(
+                urlRequest: &request,
+                bodyParameters: bodyParameters,
+                urlParameters: urlParameters,
+                bodyDataParameters: bodyDataParameters
+            )
         } catch {
             throw error
         }
